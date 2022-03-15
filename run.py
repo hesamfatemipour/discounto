@@ -1,10 +1,4 @@
-from flask import Flask, jsonify, request
-from marshmallow import ValidationError
-from http import HTTPStatus
-from datetime import timedelta
-
-import config
-from schema.schema import RequestSchema
+from flask import Flask
 
 app = Flask(__name__)
 
