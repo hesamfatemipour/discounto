@@ -5,5 +5,5 @@ class MockedNats:
 
     # will publish an event on a discount being consumed
     @staticmethod
-    def publish(payload):
+    async def publish(payload):
         return {}

@@ -1,6 +1,7 @@
 from flask import Flask
 from adaptors.db import MockedDB
 from adaptors.redis import MockedRedis
+from adaptors.message_queue import MockedNats
 
 app = Flask(__name__)
 
@@ -22,4 +23,5 @@ def create_discount_code(payload):
 def consume_discount_code(code):
     MockedRedis.use_one(code)
     MockedDB.consume(code, -1)
+    MockedNats.publish(code)  # inorder to track the users detail we can use users jwt info
     return
