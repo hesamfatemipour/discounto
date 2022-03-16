@@ -10,6 +10,31 @@ services:
     networks:
       server_network_net:
         ipv4_address: 10.0.1.12
+  nats:
+    image: nats
+    container_name: nats
+    restart: always
+    expose:
+      - 4222
+    networks:
+      server_network_net:
+        ipv4_address: 10.0.1.11
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    expose:
+      - 6379
+    networks:
+      server_network_net:
+        ipv4_address: 10.0.1.12
+  db:
+    image: sqlite3
+    container_name: sqlite
+    restart: always
+    networks:
+      server_network_net:
+        ipv4_address: 10.0.1.13
 
 networks:
   server_network_net:
